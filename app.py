@@ -5,7 +5,6 @@ import io
 # facerec.py
 #import cv2
 
-import cv2
 from face_recognize import predictor
 global p
 p = predictor()
