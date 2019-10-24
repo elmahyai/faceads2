@@ -1,0 +1,5 @@
+numpy
+Flask==0.11.1
+torchvision
+pillow
+gunicorn

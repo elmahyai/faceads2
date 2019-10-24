@@ -1,0 +1,408 @@
+<!doctype html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js " lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Site Meta -->
+    <title>WAKEB</title>
+    <meta name="keywords" content="AI">
+    <meta name="description" content="AI Wakeb">
+    <meta name="author" content="Wakeb">
+    
+    <!-- Site Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='images/siteicons/apple-icon-57x57.png')}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='images/siteicons/apple-icon-60x60.png')}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='images/siteicons/apple-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='images/siteicons/apple-icon-76x76.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='images/siteicons/apple-icon-114x114.png')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='images/siteicons/apple-icon-120x120.png')}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='images/siteicons/apple-icon-144x144.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='images/siteicons/apple-icon-152x152.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/siteicons/apple-icon-180x180.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static', filename='images/siteicons/android-icon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/siteicons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='images/siteicons/favicon-96x96.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/siteicons/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/siteicons/manifest.json')}}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/siteicons/ms-icon-144x144.png')}}">
+    <meta name="theme-color" content="#ffffff">
+
+	<!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet"> 
+	
+    <!-- Custom & Default Styles -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<!--[if lt IE 9]>
+		<script src="{{ url_for('static', filename='js/vendor/html5shiv.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/vendor/respond.min.js')}}"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+
+    <!-- LOADER -->
+    <div id="preloader">
+      <img class="preloader" src="{{ url_for('static', filename='images/loader.gif')}}" alt="Loading . . . ">
+  </div><!-- end loader -->
+  <!-- END LOADER -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h1>
+            <label id="lbltipAdded">الإعلان الحالي تم تحديدة بناءا علي</label>
+            <br> 
+            <label id="lbltipAddedage">العمر</label>
+            <br> 
+
+            <label id="lbltipAddedgender">الجنس</label>
+            <br> 
+
+            <label id="lbltipAddedexpression">التعبيرات الوجهية</label>
+            <br> 
+
+            <label id="lbltipAddedComment">النظارة</label>
+
+
+          </h1>
+        </div>
+        <div class="modal-body">
+          <video autoplay muted loop id = "myVideo" src="{{ url_for('static', filename='kkk.webm') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="wrapper">
+      <header class="header">
+          <div class="topbar clearfix">
+              <div class="container">
+                  <div class="row-fluid">
+                      <div class="col-md-6 col-sm-6 text-left">
+                          <p>
+                              <strong><i class="fa fa-phone"></i></strong> <a href="tel:+966531089888">+96 653 108 98 88</a> &nbsp;&nbsp;
+                              <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:info@wakeb.tech">info@wakeb.tech</a>
+                          </p>
+                      </div><!-- end left -->
+                      <div class="col-md-6 col-sm-6 hidden-xs text-right">
+                          
+                      </div><!-- end left -->
+                  </div><!-- end row -->
+              </div><!-- end container -->
+          </div><!-- end topbar -->
+
+          <div class="container">
+              <nav class="navbar navbar-default yamm">
+                  <div class="navbar-header">
+                      <div class="logo-normal">
+                          <a class="navbar-brand" href="http://wakeb.tech/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Logo"></a>
+                      </div>
+                  </div>
+              </nav><!-- end navbar -->
+          </div><!-- end container -->
+      </header>
+      <section id="home" class="video-section js-height-full">
+          <div class="overlay"></div>
+          <div class="home-text-wrapper relative container">
+              <div class="home-message">
+                 <div class="row">
+                    <div class="col-xs-12 result text-center">
+                        <p> نظام التسويق المخصص الذكي <small>أحد مشاريع واكب</small></p>
+                        <p>Intelligent Personalized Marketing System <small>IPMS</small></p>
+                        <hr />
+                    </div>
+                    <div class="row">
+                        <div class="container">
+                            <div class="col-xs-5 col-sm-6">
+                                <h4 class="text-center"><button id="snap" class="btn btn-default wow slideInRight">افتح الكاميرا&nbsp;<i class="fa fa-camera"></i> </button></h4>
+                                <div id="videocontainer" class="divcontainer text-center">
+                                    <video onplay="onPlay(this)" id="inputVideo" autoplay muted type="video/mp4"></video>
+                                    <canvas id="overlay" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 ">
+                                <div class="choice">
+                                    <h3 class="text-center">النماذج الموجودة حاليا</h3>
+                                    
+                                    <div class="radio">
+                                        <label class="col-lg-6 col-xs-12">
+                                            <input style = "margin-top:7px;" type="radio" name="model5" value="gender" checked/>الجنس
+                                        </label>
+                                        <label class="col-lg-6 col-xs-12">
+                                            <input style = "margin-top:7px;"  type="radio" name="model2" value="glass" checked/>النظارات
+                                        </label>
+                                        <label class="col-lg-6 col-xs-12">
+                                            <input style = "margin-top:7px;" type="radio" name="model3" value="Young" checked/>العمر
+                                        </label>
+                                        <label class="col-lg-6 col-xs-12">
+                                            <input style = "margin-top:7px;" type="radio" name="model4" value="Pale_Skin" checked/>التعبيرات الوجهية
+                                        </label>
+                                    </div>
+                                    <h4 class="text-center"><button id="play" class="btn btn-success wow slideInRight" data-toggle="modal" data-target="#videoModal">بدء العرض</button></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+              </div>
+          </div>
+      </section>
+
+      <div class="copyrights">
+          <div class="container">
+              <div class="clearfix">
+                  <div class="pull-left col-xs-6">
+                      <div class="cop-logo">
+                          <a href="http://wakeb.tech/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
+                      </div>
+                  </div>
+
+                  <div class="pull-right col-xs-6">
+                      <div class="footer-links">
+                          <ul class="list-inline">
+                              <li>All CopyRight &copy; Reserved To  <a href="#">Wakeb</a> 2019</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div><!-- end container -->
+      </div><!-- end copy -->
+  </div><!-- end wrapper -->
+
+  <script src="{{ url_for('static', filename='js/face-api.min.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-1.12.2.min.js" type="text/javascript"></script>
+
+  <script>
+
+      $(document).ready(function() {
+          faceapi.tf.ENV.set('WEBGL_PACK', false)
+
+      })
+      const videoEl = document.getElementById('inputVideo')
+      const canvas = document.getElementById('overlay')
+      var video1 = document.getElementById("myVideo");
+      async function run() {
+          faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
+          await faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+          await faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
+
+          await faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+
+
+          
+          const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+          videoEl.srcObject = stream;
+
+      }
+      function resizeCanvasAndResults(dimensions, canvas, results) {
+          const { width, height } = dimensions instanceof HTMLVideoElement
+              ? faceapi.getMediaDimensions(dimensions)
+              : dimensions
+          //return results.map(res => res)
+          return results
+      };
+
+      function drawDetections(dimensions, canvas, results) {
+
+      };
+      async function onPlay(videoEl) {
+
+          const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 416, scoreThreshold: 0.2 })
+          var result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions().withAgeAndGender()
+          //console.log(result.age)
+
+
+          if (result) {
+              var age1 = Math.round(result.age)
+              var gender1 = result.gender
+              //console.log(result.gender)
+              //console.log(result.expressions)
+              var ex = result.expressions
+              var ex1 = Object.keys(ex).reduce((a, b) => ex[a] > ex[b] ? a : b);
+              console.log(ex1)
+              const resizedResults = resizeCanvasAndResults(videoEl, canvas, result.detection)
+              //console.log("resizedresults")
+              //resizedResults = result.detection
+              console.log(resizedResults)
+              //cropped_box = resizedResults.map(resizedResults => resizedResults.box)
+              cropped_box = resizedResults.box
+              //dim_x = Math.round(cropped_box.map(box => box.x))
+              //dim_y = Math.round(cropped_box.map(box => box.y))
+              //dim_width = Math.round(cropped_box.map(box => box.width))
+              //dim_height = Math.round(cropped_box.map(box => box.height))
+
+              dim_x = Math.round(cropped_box.x)
+              dim_y = Math.round(cropped_box.y)
+              dim_width = Math.round(cropped_box.width)
+              dim_height = Math.round(cropped_box.height)
+              var crop = {
+                  top :  Math.max((dim_y - 55),0),
+                  left : dim_x ,
+                  width : dim_width + 20,
+                  height : dim_height + 50
+              }
+              var ctx = canvas.getContext("2d");
+              console.log([ctx,crop.top,crop.left])
+
+
+
+              //const divface = document.createElement("div");
+
+              //const c = document.getElementById('videocontainer')
+              //c.append(divface)  
+              
+              //divface.setAttribute("style",`width:${dim_width}px;height:${dim_height}px; position:absolute;
+              // top: ${dim_y}px; left: ${dim_x}px; border:1px solid #f00; z-index: 10000000;display:block`)
+              canvas.width = 128
+              canvas.height = 128
+              ctx.drawImage(videoEl, crop.left, crop.top, crop.width, crop.height, 0, 0, 128, 128);
+              send_canvas_ctx(age1, gender1,ex1);
+
+              // todo
+              // stop the loop
+
+          }
+          else {
+              document.getElementById('lbltipAddedComment').innerHTML = "النظارة";
+              document.getElementById('lbltipAddedage').innerHTML = "العمر";
+
+              document.getElementById('lbltipAdded').innerHTML = "قف أمام الكاميرا حتي أراك";
+              document.getElementById('lbltipAddedgender').innerHTML = "الجنس";
+              document.getElementById('lbltipAddedexpression').innerHTML = "التعبيرات الوجهية";
+
+              current_video = ""
+              //console.log("else")
+              
+              if (video1.getAttribute("src") !== "/static/kkk.webm"){
+                  //current_video = "man"
+                  video1.setAttribute("src", "{{ url_for('static', filename='kkk.webm')}}")
+               }
+               //setTimeout(() => onPlay(videoEl),1000)
+
+        
+          }
+      }
+
+      document.getElementById("snap").addEventListener("click", function() {
+          run()
+      });
+      document.getElementById("play").addEventListener("click", function() {
+      window.setInterval(function(){onPlay(videoEl)}, 2000);
+        
+
+          
+      });
+      var current_video = ""
+
+      function send_canvas_ctx(age1,gender1,ex1) {
+          document.getElementById('lbltipAdded').innerHTML = "الإعلان الحالي تم تحديده بناءا علي ";
+          document.getElementById('lbltipAddedage').innerHTML = "العمر التقديري " + age1;
+          if (gender1 === "male"){
+            document.getElementById('lbltipAddedgender').innerHTML = "رجل";
+          } else if (gender1 === "female") {
+          document.getElementById('lbltipAddedgender').innerHTML = "امرأة";
+          }
+
+          if (ex1 === "neutral"){
+            document.getElementById('lbltipAddedexpression').innerHTML = "محايد";
+          } else if (ex1 === "happy") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "سعيد";
+          } else if (ex1 === "sad") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "حزين";
+          }else if (ex1 === "angry") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "غاضب";
+          }else if (ex1 === "fearful") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "خائف";
+          }else if (ex1 === "disgusted") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "مشمئذ";
+          }else if (ex1 === "surprised") {
+          document.getElementById('lbltipAddedexpression').innerHTML = "مندهش";
+          }
+
+
+
+          //var selected_model = document.querySelector('input[name="model"]:checked').value;
+          console.log("sending img to server..")
+          //console.log(selected_model)
+          input_data = canvas.toDataURL('image/png');
+          window.fetch('/snap_a_signal', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  data: input_data,
+                  selected_model: "glass"
+              })
+          }).then((response) => response.json()).then((json) =>  {
+              //document.getElementById('results').innerHTML = json["results"]
+              //document.getElementById('accuracy').innerHTML = json["accuracy"]
+              message_to_show = json["results"] + '\n' + json["accuracy"]
+              
+              //Swal.fire(message_to_show)
+              if (video1.getAttribute("src") === "/static/man.webm"){
+                  current_video = "man"
+              } else if (video1.getAttribute("src") === "/static/woman.webm") {
+                  current_video = "woman"
+              } else if (video1.getAttribute("src") === "/static/glasses.webm") {
+                  current_video = "glasses"
+              } else if (video1.getAttribute("src") === "/static/noglasses.webm") {
+                  current_video = "noglasses"
+              }
+              console.log(json["results"])
+              if (json["results"] != current_video){
+                  if (json["results"] === "man"){
+                    document.getElementById('lbltipAddedComment').innerHTML = "رجل";
+                    video1.setAttribute("src", "{{ url_for('static', filename='man.webm')}}")
+                  } else if (json["results"] === "woman"){
+                    document.getElementById('lbltipAddedComment').innerHTML = "امرأة";
+                    video1.setAttribute("src", "{{ url_for('static', filename='woman.webm')}}")
+                  }  else if (json["results"] === "glasses"){
+                    document.getElementById('lbltipAddedComment').innerHTML = "ترتدي نظارة";
+                    video1.setAttribute("src", "{{ url_for('static', filename='glasses.webm')}}")
+                  }  else if (json["results"] === "noglasses"){
+                    document.getElementById('lbltipAddedComment').innerHTML = "لا ترتدي نظارة";
+
+                    video1.setAttribute("src", "{{ url_for('static', filename='noglasses.webm')}}")
+                  }
+              }
+              
+              
+              
+              //console.log("else2")
+              //const videoEl = document.getElementById('inputVideo')
+              //onPlay(videoEl)
+          });
+        }
+       // <h4 id="results">النتيجة تظهر هنا</h4>
+         //               <h4 id="accuracy">نسبة الدقة تظهر هنا</h4>
+  </script>
+  <!-- jQuery Files -->
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/animate.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+
+
+</body>
+</html>
