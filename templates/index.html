@@ -120,103 +120,116 @@
       </div>
     </div>
   </div>
-  <div id="wrapper">
-      <header class="header">
-          <div class="topbar clearfix">
-              <div class="container">
-                  <div class="row-fluid">
-                      <div class="col-md-6 col-sm-6 text-left">
-                          <p>
-                              <strong><i class="fa fa-phone"></i></strong> <a href="tel:+966531089888">+96 653 108 98 88</a> &nbsp;&nbsp;
-                              <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:info@wakeb.tech">info@wakeb.tech</a>
-                          </p>
-                      </div><!-- end left -->
-                      <div class="col-md-6 col-sm-6 hidden-xs text-right">
-                          
-                      </div><!-- end left -->
-                  </div><!-- end row -->
-              </div><!-- end container -->
-          </div><!-- end topbar -->
 
-          <div class="container">
-              <nav class="navbar navbar-default yamm">
-                  <div class="navbar-header">
-                      <div class="logo-normal">
-                          <a class="navbar-brand" href="http://wakeb.tech/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Logo"></a>
-                      </div>
-                  </div>
-              </nav><!-- end navbar -->
-          </div><!-- end container -->
-      </header>
-      <section id="home" class="video-section js-height-full">
-          <div class="overlay"></div>
-          <div class="home-text-wrapper relative container">
-              <div class="home-message">
-                 <div class="row">
-                    <div class="col-xs-12 result text-center">
-                        <p> نظام التسويق المخصص الذكي <small>أحد مشاريع واكب</small></p>
-                        <p>Intelligent Personalized Marketing System new <small>IPMS</small></p>
-                        <hr />
-                    </div>
-                    <div class="row">
-                        <div class="container">
-                            <div class="col-xs-5 col-sm-6">
-                                <h4 class="text-center"><button id="snap" class="btn btn-default wow slideInRight">افتح الكاميرا&nbsp;<i class="fa fa-camera"></i> </button></h4>
-                                <div id="videocontainer" class="divcontainer text-center">
-                                    <video onplay="onPlay(this)" id="inputVideo" autoplay muted type="video/mp4"></video>
-                                    <canvas id="overlay" />
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 ">
-                                <div class="choice">
-                                    <h3 class="text-center">النماذج الموجودة حاليا</h3>
-                                    
-                                    <div class="radio">
-                                        <label class="col-lg-6 col-xs-12">
-                                            <input style = "margin-top:7px;" type="radio" name="model5" value="gender" checked/>الجنس
-                                        </label>
-                                        <label class="col-lg-6 col-xs-12">
-                                            <input style = "margin-top:7px;"  type="radio" name="model2" value="glass" checked/>النظارات
-                                        </label>
-                                        <label class="col-lg-6 col-xs-12">
-                                            <input style = "margin-top:7px;" type="radio" name="model3" value="Young" checked/>العمر
-                                        </label>
-                                        <label class="col-lg-6 col-xs-12"></label>
-                                            <input style = "margin-top:7px;" type="radio" name="model4" value="Pale_Skin" checked/>التعبيرات الوجهية
-                                        </label>
+  <div id="wrap">
 
-                                    </div>
-                                    <h4 class="text-center"><button id="play" class="btn btn-success wow slideInRight" data-toggle="modal" data-target="#videoModal">بدء العرض</button></h4>
-                                </div>
-                            </div>
+    <!-- Header -->
+    <div id="header">   
+        <div class="navigation fixed-top background scroll">
+                <div class="container">
+                    <nav id="navbar-example" class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand brand-logo" target="-blank" href="http://wakeb.tech/">
+                            <img src="{{ url_for('static', filename='images/wakeb.png')}}" alt="Wakeb" title="Wakeb">
+                        </a>
+                                                
+                        <button class="navbar-toggler hamburger " style=" visibility: visible;" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="hamburger-box">
+                            <span class="hamburger-label"></span>
+                            <span class="hamburger-inner"></span>
+                          </span>
+                          </button>                    
+
+                        <div class="top-nav collapse navbar-collapse" id="nav-content">   
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Solutions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">About us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">Contact us</a>
+                                </li>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a href="index.rtl.html">
+                                        <img src="{{ url_for('static', filename='images/lang.png')}}" class="mr-1">
+                                        <span>Arabic</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+                    </nav>
+            </div>
+        </div>
+    </div>
+    <!--/. Header -->
+
+    <!-- Page intro -->
+    <div id="hero-bg" class="scroll top">
+        <div class="container">
+            <div class="hero-inner row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="hero-content">
+                        <h1>Intelligent Personalized Marketing System (IPMS)</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam era.</p>
+                        <ul>
+                            <li>Step1</li>
+                            <li >
+                                <button class="btn link" id="snap">
+                                    <span>Open Camera</span> 
+                                    <img src="{{ url_for('static', filename='images/cam.png')}}"></button>
+                            </li>
+                            <li class="check"><img src="assets/images/check.png"></li>
+                        </ul>
+                        <ul>
+                            <li>Step2</li>
+                            <li >
+                                <button class="btn  link" id="play" data-toggle="modal" data-target="#videoModal">
+                                    <span>View Ad</span> 
+                                    <img src="{{ url_for('static', filename='images/play.png')}}"></button>
+                            </li>
+                        </ul>
                     </div>
-                 </div>
-              </div>
-          </div>
-      </section>
+                </div>
+                <div class="col-lg-6 col-md-5 hide-small">
+                    <div class="here-side-img">
+                        <img src="{{ url_for('static', filename='images/face.svg')}}">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- /. Page intro -->
 
-      <div class="copyrights">
-          <div class="container">
-              <div class="clearfix">
-                  <div class="pull-left col-xs-6">
-                      <div class="cop-logo">
-                          <a href="http://wakeb.tech/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt=""></a>
-                      </div>
-                  </div>
+    <!--Footer-->
+    <div class="dark-footer">
+        <div class="container">
+        <div class="row">
+            <div class="logo col-md-4 ">
+                <a target="_blank" href="http://wakeb.tech/"><img src="{{ url_for('static', filename='images/light-wakeb.png')}}" alt="wakeb" title="wakeb"></a>
+            </div>
+            <div class="col-md-8 cpr">
+                Product powered by Wakeb, All copyrights reserved © 2019
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- /. Footer -->    
 
-                  <div class="pull-right col-xs-6">
-                      <div class="footer-links">
-                          <ul class="list-inline">
-                              <li>All CopyRight &copy; Reserved To  <a href="#">Wakeb</a> 2019</li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div><!-- end container -->
-      </div><!-- end copy -->
-  </div><!-- end wrapper -->
-
+  </div><!--./wrap -->
 
 
 
