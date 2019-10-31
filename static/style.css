@@ -807,3 +807,7 @@ RESPONSIVE
     font-size: 38px;
     font-weight: 400;
 }
+label { 
+font-size: 12px; 
+color : red;
+}

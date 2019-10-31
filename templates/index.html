@@ -68,7 +68,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h1>
+          <div>
             <label id="lbltipAdded">الإعلان الحالي تم تحديدة بناءا علي</label>
             <br> 
             <label id="lbltipAddedage">العمر</label>
@@ -82,8 +82,35 @@
 
             <label id="lbltipAddedComment">النظارة</label>
 
+            <br> 
+            <label>الإحصائيات</label>
+            <br> 
+            <label>عدد المارة</label>
+            <br> 
+            <label id="lball">0</label>
+            <br> 
+            <label>عدد مشاهدي الإعلان الذكور مرتدي النظارة</label>
+            <br> 
+            <label id="lbmanglasses">0</label>
+            <br> 
+            <label>عدد مشاهدي الإعلان الإناث مرتدي النظارة</label>
+            <br> 
+            <label id="lbwomanglasses">0</label>
+            <br> 
+            <label>عدد مشاهدي الإعلان الذكور غير مرتدي النظارة</label>
+            <br> 
+            <label id="lbmannoglasses">0</label>
+            <br> 
+            <label>عدد مشاهدي الإعلان الإناث غير مرتدي النظارة</label>
+            <br> 
+            <label id="lbwomannoglasses">0</label>
+            <br> 
 
-          </h1>
+            <label id="lbtimetitle"> الوقت الذي استغرقه مشاهد  الإعلان </label>
+            <br> 
+            <label id="lbtime">0</label>
+
+          </div>
         </div>
         <div class="modal-body">
           <video autoplay muted loop id = "myVideo" src="{{ url_for('static', filename='kkk.webm') }}" type="video/mp4">
@@ -154,9 +181,10 @@
                                         <label class="col-lg-6 col-xs-12">
                                             <input style = "margin-top:7px;" type="radio" name="model3" value="Young" checked/>العمر
                                         </label>
-                                        <label class="col-lg-6 col-xs-12">
+                                        <label class="col-lg-6 col-xs-12"></label>
                                             <input style = "margin-top:7px;" type="radio" name="model4" value="Pale_Skin" checked/>التعبيرات الوجهية
                                         </label>
+
                                     </div>
                                     <h4 class="text-center"><button id="play" class="btn btn-success wow slideInRight" data-toggle="modal" data-target="#videoModal">بدء العرض</button></h4>
                                 </div>
@@ -225,25 +253,27 @@
       function drawDetections(dimensions, canvas, results) {
 
       };
+      
       async function onPlay(videoEl) {
 
           const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 416, scoreThreshold: 0.2 })
           var result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions().withAgeAndGender()
           //console.log(result.age)
 
-
           if (result) {
-              var age1 = Math.round(result.age)
-              var gender1 = result.gender
+              document.getElementById('lbtimetitle').innerHTML = " الوقت الذي استغرقه مشاهد  الإعلان";
+              //console.log(counter)
+              var age1 = Math.round(result.age - 5)
+              gender1 = result.gender
               //console.log(result.gender)
               //console.log(result.expressions)
               var ex = result.expressions
               var ex1 = Object.keys(ex).reduce((a, b) => ex[a] > ex[b] ? a : b);
-              console.log(ex1)
+              //console.log(ex1)
               const resizedResults = resizeCanvasAndResults(videoEl, canvas, result.detection)
               //console.log("resizedresults")
               //resizedResults = result.detection
-              console.log(resizedResults)
+              //console.log(resizedResults)
               //cropped_box = resizedResults.map(resizedResults => resizedResults.box)
               cropped_box = resizedResults.box
               //dim_x = Math.round(cropped_box.map(box => box.x))
@@ -262,7 +292,8 @@
                   height : dim_height + 50
               }
               var ctx = canvas.getContext("2d");
-              console.log([ctx,crop.top,crop.left])
+              
+              //console.log([ctx,crop.top,crop.left])
 
 
 
@@ -280,6 +311,41 @@
 
               // todo
               // stop the loop
+              if (reversecounter > 2 && glassesvariable != ''){
+
+                counter = counter + 1
+                document.getElementById('lball').innerHTML = counter;
+                console.log("a new person passed by ")
+
+                if (gender1 === "male" && glassesvariable === 'glasses'){
+
+                    countermanglasses = countermanglasses + 1
+                    document.getElementById('lbmanglasses').innerHTML = countermanglasses;
+                } else if (gender1 === "female" && glassesvariable === 'glasses') {
+
+                    counterwomanglasses = counterwomanglasses + 1
+                    document.getElementById('lbwomanglasses').innerHTML = counterwomanglasses;
+                } else if (gender1 === "male" && glassesvariable === 'noglasses') {
+
+                    countermannoglasses = countermannoglasses + 1
+                    document.getElementById('lbmannoglasses').innerHTML = countermannoglasses;
+                } else if (gender1 === "female" && glassesvariable === 'noglasses') {
+
+                    counterwomannoglasses = counterwomannoglasses + 1
+                    document.getElementById('lbwomannoglasses').innerHTML = counterwomannoglasses;
+                }
+                
+                
+                //console.log(counter)
+              }
+              time_in_front_of_camera = time_in_front_of_camera + 2
+              document.getElementById('lbtime').innerHTML = "ثانية" + time_in_front_of_camera  ;
+
+              if (glassesvariable != ''){
+                reversecounter = 0
+              }
+              reverse_time_in_front_of_camera = 0
+              
 
           }
           else {
@@ -289,6 +355,7 @@
               document.getElementById('lbltipAdded').innerHTML = "قف أمام الكاميرا حتي أراك";
               document.getElementById('lbltipAddedgender').innerHTML = "الجنس";
               document.getElementById('lbltipAddedexpression').innerHTML = "التعبيرات الوجهية";
+              document.getElementById('lbtimetitle').innerHTML = " الوقت الذي استغرقه مشاهد  الإعلان السابق";
 
               current_video = ""
               //console.log("else")
@@ -298,14 +365,36 @@
                   video1.setAttribute("src", "{{ url_for('static', filename='kkk.webm')}}")
                }
                //setTimeout(() => onPlay(videoEl),1000)
+              reversecounter = reversecounter + 1
+            //console.log("revesrcounter")
+            //console.log(reversecounter)
+              reverse_time_in_front_of_camera = reverse_time_in_front_of_camera + 1
+              if (reverse_time_in_front_of_camera > 4 && time_in_front_of_camera > 0){
+                    console.log("time spent by last person was: ")
+                    console.log(time_in_front_of_camera)
+                    time_in_front_of_camera = 0
+                    reverse_time_in_front_of_camera = 0
+                    document.getElementById('lbtimetitle').innerHTML = " الوقت الذي يستغرقه مشاهد الإعلان السابق";
+                    document.getElementById('lbtime').innerHTML = "ثانية" + 0  ;
 
-        
-          }
+                }
+                
+                }
       }
 
       document.getElementById("snap").addEventListener("click", function() {
           run()
       });
+      var counter = 0
+      var countermanglasses = 0
+      var countermannoglasses = 0
+      var counterwomanglasses = 0
+      var counterwomannoglasses = 0
+      var reversecounter = 20000
+      var time_in_front_of_camera = 0
+      var reverse_time_in_front_of_camera = 0
+      var gender1 = ''
+      var glassesvariable = ''
       document.getElementById("play").addEventListener("click", function() {
       window.setInterval(function(){onPlay(videoEl)}, 2000);
         
@@ -342,7 +431,7 @@
 
 
           //var selected_model = document.querySelector('input[name="model"]:checked').value;
-          console.log("sending img to server..")
+          //console.log("sending img to server..")
           //console.log(selected_model)
           input_data = canvas.toDataURL('image/png');
           window.fetch('/snap_a_signal', {
@@ -358,7 +447,7 @@
               //document.getElementById('results').innerHTML = json["results"]
               //document.getElementById('accuracy').innerHTML = json["accuracy"]
               message_to_show = json["results"] + '\n' + json["accuracy"]
-              
+              glassesvariable = json["results"] 
               //Swal.fire(message_to_show)
               if (video1.getAttribute("src") === "/static/man.webm"){
                   current_video = "man"
@@ -369,7 +458,7 @@
               } else if (video1.getAttribute("src") === "/static/noglasses.webm") {
                   current_video = "noglasses"
               }
-              console.log(json["results"])
+              //console.log(json["results"])
               if (json["results"] != current_video){
                   if (json["results"] === "man"){
                     document.getElementById('lbltipAddedComment').innerHTML = "رجل";
