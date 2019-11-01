@@ -60,7 +60,7 @@
         <div class="loader-effect"></div>
     </div>
 
-  <!-- Modal -->
+    <!-- Modal -->
   <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -68,54 +68,120 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <div>
-            <label id="lbltipAdded">الإعلان الحالي تم تحديدة بناءا علي</label>
-            <br> 
-            <label id="lbltipAddedage">العمر</label>
-            <br> 
 
-            <label id="lbltipAddedgender">الجنس</label>
-            <br> 
-
-            <label id="lbltipAddedexpression">التعبيرات الوجهية</label>
-            <br> 
-
-            <label id="lbltipAddedComment">النظارة</label>
-
-            <br> 
-            <label>الإحصائيات</label>
-            <br> 
-            <label>عدد المارة</label>
-            <br> 
-            <label id="lball">0</label>
-            <br> 
-            <label>عدد مشاهدي الإعلان الذكور مرتدي النظارة</label>
-            <br> 
-            <label id="lbmanglasses">0</label>
-            <br> 
-            <label>عدد مشاهدي الإعلان الإناث مرتدي النظارة</label>
-            <br> 
-            <label id="lbwomanglasses">0</label>
-            <br> 
-            <label>عدد مشاهدي الإعلان الذكور غير مرتدي النظارة</label>
-            <br> 
-            <label id="lbmannoglasses">0</label>
-            <br> 
-            <label>عدد مشاهدي الإعلان الإناث غير مرتدي النظارة</label>
-            <br> 
-            <label id="lbwomannoglasses">0</label>
-            <br> 
-
-            <label id="lbtimetitle"> الوقت الذي استغرقه مشاهد  الإعلان </label>
-            <br> 
-            <label id="lbtime">0</label>
-
-          </div>
         </div>
         <div class="modal-body">
-          <video autoplay muted loop id = "myVideo" src="{{ url_for('static', filename='kkk.webm') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-          </video>
+            <div class="adv-content">
+              <video autoplay muted loop id = "myVideo" src="{{ url_for('static', filename='ad2.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+              </video>
+              
+            </div>  
+            <div class="adv-overflow">
+                <div class="chosen">
+                    <div class="title">chosen Ad for</div>
+                    <ul>
+                        <li>
+                            <img src="{{ url_for('static', filename='brush/wakeb.png')}}">
+                            <span>26 years old</span>
+                        </li>
+                        <li>
+                            <img src="{{ url_for('static', filename='images/gender.png')}}">
+                            <span>male</span>
+                        </li>
+                        <li>
+                            <img src="{{ url_for('static', filename='images/smile.png')}}">
+                            <span>26 years old</span>
+                        </li>
+                        <li>
+                            <img src="{{ url_for('static', filename='images/glasses.png')}}">
+                            <span>male</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="statics">
+                    <div class="title">Statics</div>
+                    <fieldset>
+                        <legend>Viewers</legend>
+                        <ul>
+                            <li>
+                                <label>All</label>
+                                <span>46</span>
+                            </li>
+                            <li>
+                                <label>Male</label>
+                                <span>18</span>
+                            </li>
+                            <li>
+                                <label>Females</label>
+                                <span>15</span>
+                            </li>
+                            <li>
+                                <label>Glasses</label>
+                                <span>13</span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Ads</legend>
+                        <ul>
+                            <li>
+                                <label>Males Ads</label>
+                                <span>46</span>
+                            </li>
+                            <li>
+                                <label>Females Ads</label>
+                                <span>18</span>
+                            </li>
+                            <li>
+                                <label>Glasses Ads</label>
+                                <span>15</span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Time</legend>
+                        <ul>
+                            <li>
+                                <label>Current Viwers</label>
+                                <span>46</span>
+                            </li>
+                            <li>
+                                <label>Total times</label>
+                                <span>18</span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Emotion</legend>
+                        <ul>
+                            <li>
+                                <label>Happy</label>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" aria-valuenow="30"
+                                  aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                                  </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label>Sad</label>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" aria-valuenow="50"
+                                  aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                  </div>
+                                </div>
+                            </li>
+                            <li>
+                                <label>Natural</label>
+                                <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
         </div>
       </div>
     </div>
