@@ -35,16 +35,11 @@
     <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/siteicons/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
 
-	<!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet"> 
+
 	
     <!-- Custom & Default Styles -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css')}}">
-<!--     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"> -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css')}}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 	<!--[if lt IE 9]>
 		<script src="{{ url_for('static', filename='js/vendor/html5shiv.min.js')}}"></script>
@@ -66,9 +61,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">x</span>
           </button>
-
         </div>
         <div class="modal-body">
             <div class="adv-content">
@@ -83,19 +77,19 @@
                     <ul>
                         <li>
                             <img src="{{ url_for('static', filename='images/brush.png')}}">
-                            <span>26 years old</span>
+                            <span><small>26</small> years old</span>
                         </li>
                         <li>
                             <img src="{{ url_for('static', filename='images/gender.png')}}">
-                            <span>male</span>
+                            <span>Male</span>
                         </li>
                         <li>
                             <img src="{{ url_for('static', filename='images/smile.png')}}">
-                            <span>26 years old</span>
+                            <span>Natural</span>
                         </li>
                         <li>
                             <img src="{{ url_for('static', filename='images/glasses.png')}}">
-                            <span>male</span>
+                            <span>Wearing Glassess</span>
                         </li>
                     </ul>
                 </div>
@@ -247,6 +241,15 @@
             <div class="hero-inner row">
                 <div class="col-lg-6 col-md-7">
                     <div class="hero-content">
+                        <div class="powered-by">
+                            <div class="media">
+                              <img src="{{ url_for('static', filename='images/robot.png')}}" class="mr-2">
+                              <div class="media-body">
+                                <h5 class="my-0">Product powered by</h5>
+                                <h3 class="my-0">MASBAR</h3>
+                              </div>
+                            </div>
+                        </div>
                         <h1>Intelligent Personalized Marketing System (IPMS)</h1>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam era.</p>
                         <ul>
@@ -256,7 +259,7 @@
                                     <span>Open Camera</span> 
                                     <img src="{{ url_for('static', filename='images/cam.png')}}"></button>
                             </li>
-                            <li class="check"><img src="assets/images/check.png"></li>
+                            <li class="check"><img src="{{ url_for('static', filename='images/check.png')}}"></li>
                         </ul>
                         <ul>
                             <li>Step2</li>
@@ -270,8 +273,8 @@
                 </div>
                 <div class="col-lg-6 col-md-5 hide-small">
                     <div class="here-side-img">
-                        <img src="{{ url_for('static', filename='images/face.svg')}}">
-			    <div id="videocontainer" class="divcontainer text-center"  style="display: none;">
+                        <img src="{{ url_for('static', filename='images/face-IPMS.svg')}}">
+			            <div id="videocontainer" class="divcontainer text-center"  style="display: none;">
                             	<video onplay="onPlay(this)" id="inputVideo" autoplay muted type="video/mp4"></video>
                             <canvas id="overlay" />
                         </div>
@@ -329,10 +332,11 @@
 
 
 
-
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
   <script src="{{ url_for('static', filename='js/face-api.min.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-1.12.2.min.js" type="text/javascript"></script>
-
+  <!-- <script src="https://code.jquery.com/jquery-1.12.2.min.js" type="text/javascript"></script> -->
+  
   <script>
 // start of javascript ...................................
 // ...............................................................
@@ -607,9 +611,6 @@
          //               <h4 id="accuracy">نسبة الدقة تظهر هنا</h4>
   </script>
   <!-- jQuery Files -->
-  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/animate.js')}}"></script>
   <script src="{{ url_for('static', filename='js/functions.js')}}"></script>
 
 
