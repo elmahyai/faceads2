@@ -705,7 +705,7 @@ body{
 		padding-top: 12vh;
 	}
 	.here-side-img img{
-		min-width: 500px;
+		min-width: 60%;
 	}
 	.top-nav ul li a{
 		font-size: 18px;
