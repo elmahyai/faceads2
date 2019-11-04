@@ -271,6 +271,10 @@
                 <div class="col-lg-6 col-md-5 hide-small">
                     <div class="here-side-img">
                         <img src="{{ url_for('static', filename='images/face.svg')}}">
+			    <div id="videocontainer" class="divcontainer text-center"  style="display: none;">
+                            	<video onplay="onPlay(this)" id="inputVideo" autoplay muted type="video/mp4"></video>
+                            <canvas id="overlay" />
+                        </div>
                     </div>
                 </div>
             </div>
