@@ -351,7 +351,6 @@
         await faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
 
         await faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-        await faceapi.nets.faceLandmark68TinyNet.loadFromUri("{{ url_for('static', filename='/models')}}")
       }
       load_models()
         
@@ -390,7 +389,7 @@
       async function onPlay(videoEl) {
 
           const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 416, scoreThreshold: 0.2 })
-          var result = await faceapi.detectSingleFace(videoEl, options).withFaceLandmarks(useTinyModel = true).withFaceExpressions().withAgeAndGender()
+          var result = await faceapi.detectSingleFace(videoEl, options).withFaceExpressions().withAgeAndGender()
 
           if (result) {
               console.log(result.age)
