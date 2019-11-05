@@ -40,7 +40,6 @@
     <!-- Custom & Default Styles -->
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 	<!--[if lt IE 9]>
 		<script src="{{ url_for('static', filename='js/vendor/html5shiv.min.js')}}"></script>
 		<script src="{{ url_for('static', filename='js/vendor/respond.min.js')}}"></script>
@@ -330,6 +329,14 @@
   <!-- <script src="https://code.jquery.com/jquery-1.12.2.min.js" type="text/javascript"></script> -->
 
   <script>
+        faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
+
+        faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+        faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
+
+        faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+</script>
+<script>
 // start of javascript ...................................
 // ...............................................................
 // ...............................................................
@@ -340,12 +347,6 @@
 // ...............................................................
       $(document).ready(function() {
           faceapi.tf.ENV.set('WEBGL_PACK', false)
-          faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
-
-            faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-            faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
-
-            faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
 
       })
       const videoEl = document.getElementById('inputVideo')
