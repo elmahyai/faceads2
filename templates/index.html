@@ -346,14 +346,13 @@
       const canvas = document.getElementById('overlay')
       var video1 = document.getElementById("myVideo");
       faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
-      async function load_models() {  
-        await faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-        await faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
 
-        await faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-      }
-      load_models()
-        
+      faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+      faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
+
+      faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+      
+
       async function run() {
           
           const stream = await navigator.mediaDevices.getUserMedia({ video: true })
