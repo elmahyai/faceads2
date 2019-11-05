@@ -340,18 +340,18 @@
 // ...............................................................
       $(document).ready(function() {
           faceapi.tf.ENV.set('WEBGL_PACK', false)
+          faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
+
+            faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
+            faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
+
+            faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
 
       })
       const videoEl = document.getElementById('inputVideo')
       const canvas = document.getElementById('overlay')
       var video1 = document.getElementById("myVideo");
-      faceapi.loadTinyFaceDetectorModel('https://www.rocksetta.com/tensorflowjs/saved-models/face-api-js/')
 
-      faceapi.nets.ageGenderNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-      faceapi.nets.ssdMobilenetv1.loadFromUri("{{ url_for('static', filename='/models')}}")
-
-      faceapi.nets.faceExpressionNet.loadFromUri("{{ url_for('static', filename='/models')}}")
-      
 
       async function run() {
           
