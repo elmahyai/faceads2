@@ -52,7 +52,7 @@ class predictor:
             self.model = torch.load('modelPale_Skin_ft.pkl', map_location='cpu')
             self.model.eval()
             self.modelname = 'Pale_Skin'
-        #self.model.cuda()
+        self.model.cuda()
         print(self.modelname +' is the model')
         
         
