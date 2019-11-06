@@ -146,7 +146,7 @@
                         </ul>
                     </fieldset>
                     <fieldset>
-                        <legend>Be happy for <small id="emotion_to_zero">100</small> seconds</legend>
+                        <legend>Be happy for <small id="emotion_to_zero">10</small> seconds</legend>
                         <ul>
                             <li>
                                 <label id="Happy">Happy</label>
@@ -407,28 +407,109 @@
               gender1 = result.gender
               var ex = result.expressions
               var ex1 = Object.keys(ex).reduce((a, b) => ex[a] > ex[b] ? a : b);
-              const resizedResults = resizeCanvasAndResults(videoEl, canvas, result.detection)
 
-              cropped_box = resizedResults.box
 
-              dim_x = Math.round(cropped_box.x)
-              dim_y = Math.round(cropped_box.y)
-              dim_width = Math.round(cropped_box.width)
-              dim_height = Math.round(cropped_box.height)
-              var crop = {
-                  top :  Math.max((dim_y - 55),0),
-                  left : dim_x ,
-                  width : dim_width + 20,
-                  height : dim_height + 50
+
+
+              document.getElementById('emotion_to_zero').innerHTML = emotion_to_zero;
+                emotion_to_zero = emotion_to_zero - 1
+
+
+                if (emotion_to_zero < 1){
+                    emotion_to_zero = 10
+                    happyCounter = 0
+                    normalCounter = 0 
+                }
+
+                document.getElementById('Age').innerHTML = age1;
+                if (gender1 === "male"){
+                    document.getElementById('Gender').innerHTML = "Man";
+                } else if (gender1 === "female") {
+                document.getElementById('Gender').innerHTML = "Woman";
+                }
+
+                if (ex1 === "neutral"){
+                    document.getElementById('Emotion').innerHTML = "Normal";
+
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="green";
+
+                    normalCounter = normalCounter + 1
+                    var percentageNormal = Math.round((normalCounter / (normalCounter + happyCounter ) ) * 100)
+                    var percentageHappy = Math.round((happyCounter / (normalCounter + happyCounter )) * 100)
+
+                    document.getElementById("progressNormal").style.width = percentageNormal.toString() + "%"
+                    document.getElementById("progressHappy").style.width = percentageHappy.toString() + "%"
+
+
+                } else if (ex1 === "happy") {
+                    document.getElementById('Emotion').innerHTML = "Happy";
+
+                    document.getElementById("Happy").style.color="green";
+                    document.getElementById("Normal").style.color="black";
+
+                    happyCounter = happyCounter + 1
+                    var percentageNormal = Math.round((normalCounter / (normalCounter + happyCounter ) ) * 100)
+                    var percentageHappy = Math.round((happyCounter / (normalCounter + happyCounter )) * 100)
+                    document.getElementById("progressNormal").style.width = percentageNormal.toString() + "%"
+                    document.getElementById("progressHappy").style.width = percentageHappy.toString() + "%"
+
+                } else if (ex1 === "sad") {
+                    document.getElementById('Emotion').innerHTML = "Sad";
+
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="black";
+                }else if (ex1 === "angry") {
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="black";
+                }else if (ex1 === "fearful") {
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="black";
+                }else if (ex1 === "disgusted") {
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="black";
+                }else if (ex1 === "surprised") {
+                    document.getElementById("Happy").style.color="black";
+                    document.getElementById("Normal").style.color="black";
+                }
+
+        
+
+
+
+
+
+              if (run_every_other_time === 1){
+
+                const resizedResults = resizeCanvasAndResults(videoEl, canvas, result.detection)
+
+                cropped_box = resizedResults.box
+
+                dim_x = Math.round(cropped_box.x)
+                dim_y = Math.round(cropped_box.y)
+                dim_width = Math.round(cropped_box.width)
+                dim_height = Math.round(cropped_box.height)
+                var crop = {
+                    top :  Math.max((dim_y - 55),0),
+                    left : dim_x ,
+                    width : dim_width + 20,
+                    height : dim_height + 50
+                }
+                var ctx = canvas.getContext("2d");
+
+                canvas.width = 128
+                canvas.height = 128
+                ctx.drawImage(videoEl, crop.left, crop.top, crop.width, crop.height, 0, 0, 128, 128);
+
+
+                send_canvas_ctx(age1, gender1,ex1);
+                run_every_other_time = 0
+              } else {
+                  run_every_other_time = 1
               }
-              var ctx = canvas.getContext("2d");
 
-              canvas.width = 128
-              canvas.height = 128
-              ctx.drawImage(videoEl, crop.left, crop.top, crop.width, crop.height, 0, 0, 128, 128);
-              send_canvas_ctx(age1, gender1,ex1);
 
-              if (reversecounter > 1 && glassesvariable != ''){
+              if (reversecounter > 0 && glassesvariable != ''){
 
                 counter = counter + 1
                 document.getElementById('All').innerHTML = counter;
@@ -442,7 +523,7 @@
                 } else if (gender1 === "female" && glassesvariable === 'glasses') {
 
                     counterwomanglasses = counterwomanglasses + 1
-                    document.getElementById('Females').innerHTML = counterwomanglasses + countermanglasses;
+                    document.getElementById('Females').innerHTML = counterwomanglasses + counterwomannoglasses;
                     document.getElementById('Glasses').innerHTML = countermanglasses + counterwomanglasses;
                 } else if (gender1 === "male" && glassesvariable === 'noglasses') {
 
@@ -459,7 +540,7 @@
 
 
               }
-              time_in_front_of_camera = time_in_front_of_camera + 2
+              time_in_front_of_camera = time_in_front_of_camera + 1
               document.getElementById('Current_Viewer').innerHTML = time_in_front_of_camera  ;
               document.getElementById('Total_times').innerHTML =  total_time + time_in_front_of_camera ;
 
@@ -486,7 +567,7 @@
               reversecounter = reversecounter + 1
 
               reverse_time_in_front_of_camera = reverse_time_in_front_of_camera + 1
-              if (reverse_time_in_front_of_camera > 1 && time_in_front_of_camera > 0){
+              if (reverse_time_in_front_of_camera > 0 && time_in_front_of_camera > 0){
                     console.log("time spent by last person was: ")
                     console.log(time_in_front_of_camera)
                     total_time = total_time + time_in_front_of_camera
@@ -528,74 +609,14 @@
       var Glasses_Ads = 0
       var average_age = [0]
       var ageCorrector = 1
+      run_every_other_time = 1
       document.getElementById("play").addEventListener("click", function() {
-        window.setInterval(function(){onPlay(videoEl)}, 2000);
+        window.setInterval(function(){onPlay(videoEl)}, 1000);
       });
       var current_video = ""
 
       function send_canvas_ctx(age1,gender1,ex1) {
-          emotion_to_zero = emotion_to_zero - 2
-          document.getElementById('emotion_to_zero').innerHTML = emotion_to_zero;
-
-          if (emotion_to_zero < 4){
-            emotion_to_zero = 10
-            happyCounter = 0
-            normalCounter = 0 
-          }
-
-          document.getElementById('Age').innerHTML = age1;
-          if (gender1 === "male"){
-            document.getElementById('Gender').innerHTML = "Man";
-          } else if (gender1 === "female") {
-          document.getElementById('Gender').innerHTML = "Woman";
-          }
-
-          if (ex1 === "neutral"){
-            document.getElementById('Emotion').innerHTML = "Normal";
-
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="green";
-
-            normalCounter = normalCounter + 1
-            var percentageNormal = Math.round((normalCounter / (normalCounter + happyCounter ) ) * 100)
-            var percentageHappy = Math.round((happyCounter / (normalCounter + happyCounter )) * 100)
-
-            document.getElementById("progressNormal").style.width = percentageNormal.toString() + "%"
-            document.getElementById("progressHappy").style.width = percentageHappy.toString() + "%"
-
-
-          } else if (ex1 === "happy") {
-            document.getElementById('Emotion').innerHTML = "Happy";
-
-            document.getElementById("Happy").style.color="green";
-            document.getElementById("Normal").style.color="black";
-
-            happyCounter = happyCounter + 1
-            var percentageNormal = Math.round((normalCounter / (normalCounter + happyCounter ) ) * 100)
-            var percentageHappy = Math.round((happyCounter / (normalCounter + happyCounter )) * 100)
-            document.getElementById("progressNormal").style.width = percentageNormal.toString() + "%"
-            document.getElementById("progressHappy").style.width = percentageHappy.toString() + "%"
-
-          } else if (ex1 === "sad") {
-            document.getElementById('Emotion').innerHTML = "Sad";
-
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="black";
-          }else if (ex1 === "angry") {
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="black";
-          }else if (ex1 === "fearful") {
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="black";
-          }else if (ex1 === "disgusted") {
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="black";
-          }else if (ex1 === "surprised") {
-            document.getElementById("Happy").style.color="black";
-            document.getElementById("Normal").style.color="black";
-          }
-
- 
+          
           input_data = canvas.toDataURL('image/png');
           window.fetch('/snap_a_signal', {
               method: 'POST',
